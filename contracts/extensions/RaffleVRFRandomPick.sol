@@ -71,7 +71,7 @@ abstract contract RaffleVRFRandomPick is Raffle, VRFConsumerBaseV2 {
      * @param randomWords a list of random words i.e [uint256 rand1, uint256 rand2, ...]
      *
      * @dev hint: use the modulo of getEntryCount() from Raffle.sol on the first item in the randomWords array, 
-     * then use the _resolveRandomPick function 
+     * like what is being done in RaffleRandomPick.sol, then call the _resolveRandomPick function.
      */
     function fulfillRandomWords(
         uint256, /* requestId */
