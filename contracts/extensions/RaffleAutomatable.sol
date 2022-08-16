@@ -49,7 +49,7 @@ abstract contract RaffleAutomatable is Raffle, KeeperCompatibleInterface {
     * upkeep is needed. If you would like to encode data to decode later, try
     * `abi.encode`.
     */
-    function checkUpkeep(bytes calldata) external view override returns(bool upkeepNeeded, bytes memory) {
+    function checkUpkeep(bytes calldata checkData) external view override returns(bool upkeepNeeded, bytes memory) {
         upkeepNeeded = _upkeepNeeded();
     }
 
@@ -69,7 +69,7 @@ abstract contract RaffleAutomatable is Raffle, KeeperCompatibleInterface {
     * calling `abi.decode`. This data should not be trusted, and should be
     * validated against the contract's current state.
     */
-    function performUpkeep(bytes calldata) external override {
+    function performUpkeep(bytes calldata performData) external override {
         if (_upkeepNeeded()) {
             _runRaffleAutomation();
         }
@@ -86,6 +86,6 @@ abstract contract RaffleAutomatable is Raffle, KeeperCompatibleInterface {
         return (block.timestamp - lastRafflePick) > interval;
     }
 
-    function _runRaffleAutomation() internal virtual
+    function _runRaffleAutomation() internal virtual;
 
 }
