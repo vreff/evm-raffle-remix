@@ -61,13 +61,6 @@ abstract contract RaffleVRFRandomPick is Raffle, VRFConsumerBaseV2 {
      */
     function _randomPickWinner() internal virtual {
         // Implement me.
-        requestId = COORDINATOR.requestRandomWords(
-            _keyHash,
-            _subscriptionId,
-            _requestConfirmations,
-            _callbackGasLimit,
-            _numWords
-        );
     }
 
     /**
@@ -84,8 +77,7 @@ abstract contract RaffleVRFRandomPick is Raffle, VRFConsumerBaseV2 {
         uint256, /* requestId */
         uint256[] memory randomWords
     ) internal override {
-        uint256 idx = randomWords[0]%getEntryCount();
-        _resolveRandomPick(idx);
+        // Implement me.
     }
 
     function _resolveRandomPick(uint256 idx) internal virtual {
